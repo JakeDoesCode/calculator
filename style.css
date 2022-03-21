@@ -3,14 +3,24 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    width:100vw;
+}
+.brand{
+    display:flex;
+    justify-content: space-around;
+    font-family: 'Bangers', cursive;
+    font-size: 30px;
+    color:goldenrod;
+    margin-top:10px;
+    
 }
 .board{
     display:flex;
-    height:70vh;
-    width:30vw;
-    min-height: 250px;
-    min-width: 250px;
-    flex-shrink: 0;
+    height:80vh;
+    width:50vw;
+    min-height: 300px;
+    min-width: 400px;
     align-content: flex-end;
     flex-wrap: wrap; 
     margin:4vh;
@@ -18,21 +28,107 @@
   
 }
 
+
 button{
-   flex-grow:1;
-   height: 7vh;
-   width: 5vw;
+   height: 10%;
+   width: 16%;
    min-height: 30px;
-   min-width: 30px;
+   min-width: 40px;
    border-style:outset;
    border-radius: 3px;
-   font-size: 3vh;
+   font-size: 2vh;
    font-weight: bold;
+   flex-grow: 1;
    
 }
 .calculator{
+    display:flex;
+    width:55vw;
+    height:70vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     background-color: brown;
     border-radius: 8px;
-    min-height: 350px;
-    min-height: 350px;
+    min-height: 500px;
+    min-width: 450px;
+    
+    
+}
+
+#btn3::before{
+    content:"+";
+}
+
+#btn4::before{
+    content:"-";
+}
+#btn5::before{
+    content:"÷"
+}
+#btn9::before{
+content:"x"
+}
+
+#btn10::before{
+    content:"^"
+    }
+#btn11::before{
+    content:"√"
+        }
+#btn0::before{
+    content: "7";
+}
+#btn1::before{
+    content: "8";
+ }
+    
+#btn2::before{
+    content: "9";
+    }
+#btn6::before{
+    content: "6";
+    }
+#btn7::before{
+    content: "5";
+    }
+#btn8::before{
+    content: "4";
+    }
+#btn12::before{
+    content: "3";
+    }
+#btn13::before{
+        content: "2";
+    }
+    #btn14::before{
+        content:"1"
+}
+#btn18::before{
+ content: "0";
+}
+ 
+#btn19::before{
+ content: "=";
+}
+#btn15::before{
+    content: ".";
+   }
+#btn16::before{
+    content:"C"
+}
+#btn17::before{
+    content:"A/C"
+}
+
+
+
+#btn19{
+background-color: rgba(50, 124, 221, 0.411);
+ flex-grow: 4;
+ flex-shrink: 0;
+}
+
+#btn3,#btn4,#btn5,#btn9,#btn10,#btn11,#btn15,#btn16,#btn17{
+background-color: orange;
 }
