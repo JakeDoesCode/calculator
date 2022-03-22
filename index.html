@@ -7,17 +7,41 @@
     <title>Good Ol' Calculator</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
         </style> 
 </head>
 <body>
 <div class="flex-container">
     
 <div class="calculator">
-    
-    <div class="input"></div>
-    <div class="output"></div>
-    <div class="brand"><strong>Calcutron 6000</strong></div><div class="brand">Pussy Destroyer Edition</div>
-    <div class="board"></div>
+    <div class="brand"><strong>Calcutron 6000</strong></div>
+    <div class="brand"></div>
+    <div class="board">
+        <div class="display-out">999999</div>
+        <div class="display-in">88888</div>
+        <button id="btn9"onClick=reply_click(9)>9</button>
+        <button id="btn8"onClick=reply_click(8)>8</button>
+        <button id="btn7"onClick=reply_click(7)>7</button>
+        <button id="btnAdd" class="operator"onClick=reply_click('+')>+</button>
+        <button id="btnSub"class="operator"onClick=reply_click('-')>-</button>
+        <button id="btnMult"class="operator"onClick=reply_click('*')>x</button>
+        <button id="btn6"onClick=reply_click(6)>6</button>
+        <button id="btn5"onClick=reply_click(5)>5</button>
+        <button id="btn4"onClick=reply_click(4)>4</button>
+        <button id="btnDiv"class="operator"onClick=reply_click('/')>/</button>
+        <button id="btnExp"class="operator"onClick=reply_click('**')>^</button>
+        <button id="btnSquare"class="operator"onClick=reply_click('squareRoot')>√</button>
+        <button id="btn3"onClick=reply_click(3)>3</button>
+        <button id="btn2"onClick=reply_click(2)>2</button>
+        <button id="btn1"onClick=reply_click(1)>1</button>
+        <button id="btnDec"class="operator"onClick=reply_click('.')>.</button>
+        <button id="btnNeg"class="operator"onClick=reply_click('-')>-</button>
+        <button id="btnClearAll"class="operator"onClick=reply_click('clearAll')>A/C</button>
+        <button id="btn0"onClick=reply_click(0)>0</button>
+        <button id="btnEqual"onClick=reply_click('=')>=</button>
+    </div>
+
+    </div>
 </div>
 </div>
 </body>

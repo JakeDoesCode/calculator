@@ -1,59 +1,90 @@
 
+// taking in the inputs
+let a= prompt("num1")
+let b= prompt("num2")
+let c= prompt("oper")
+let reply_click = function(id)
+ {
+     console.log(id);
+ }
 
-function makeCalc(){
- let board= document.querySelector(".board");
+let num1 = parseFloat(a);
+let op = c;
+let num2 = parseFloat(b);
+const squareRoot = 'squareRoot'
+
+
+//basic math functions
+ function add(a,b) {
+   let sum = a+b;
+   console.log('Sum:' + sum)
+   return sum;
+ }
+ 
+ function sub(a,b) {
+  let diff = a-b;
+  console.log('Difference:' + diff);
+  return diff;
+ 
+ }
+ 
+ function mult(a,b){
+   let product= a*b;
+   console.log('Product:'+product);
+   return product
+ }
+ 
+ function divide(a,b){
+ 
+ if(a === 0 || b === 0){ alert("One does not simply divide by zero!");
+ }else{
+ let quot = a/b;
+ console.log('Divide:'+ quot);
+ return quot;
+   };
+ }
+ 
+ function exp(a,b){
+   let pow = a**b;
+   console.log('Exponent:' + pow);
+   return pow;
+ }
+ function sqr(a){
+   if(a<=0) console.log("No.");
+   let sqr = Math.sqrt(a);
+   console.log(`Square root:` + sqr);
+   return sqr;
+ }
 
  
- 
- for(let i=0; i<=19; i++){
-   let button =document.createElement(`BUTTON`)
-   button.id = `btn${i}`;
-  //  button.textContent=`${i}`
-   board.appendChild(button);
+ function operate(a,b,op){
+  if(op==='*') {
+    let answer= mult(a,b); 
+    console.log(answer);
+  }else if(op === '+'){
+    let answer= add(a,b); 
+    console.log(answer);
+  }else if (op === '-'){
+    let answer = sub(a,b); 
+    console.log(answer);
+  }else if(op==='/'){
+    let answer = divide(a,b);
+    console.log(answer);
+  }
+  else if(op==='**'){
+    let answer= exp(a,b);
+    console.log(answer);
+  }
+  else if (op===squareRoot){
+    let answer=sqr(a,b);
+    console.log(answer);
+  }else {
+    alert("Not a valid operator")
+  }
+
  }
 
 
-}
-makeCalc();
+operate(num1,num2,op)
+ 
 
-
-
-
-function add(a,b) {
-  let sum = a+b;
-  return sum;
-}
-
-function sub(a,b) {
- let diff = a-b;
- return diff;
-
-}
-
-function mult(a,b){
-  let product= a*b;
-  return product
-}
-
-function divide(a,b){
-
-if(a === 0 || b === 0) console.log("Can't do that!");
-  else{
-let quot = a/b;
-return quot;
-  };
-}
-
-function exp(a,b){
-  let pow = a**b;
-  return pow;
-}
-function sqr(a){
-  if(a===0) console.log("No.");
-  let sqr = Math.sqrt(a);
-  return sqr;
-}
-
-// make function for clear and clear all
-//make operate function (takes 2 numbers and calls one of the above functions)
-//put display in proper area
