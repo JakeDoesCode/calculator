@@ -8,11 +8,12 @@
 }
 .brand{
     display:flex;
-    justify-content: space-around;
+    align-self:flex-end;
     font-family: 'Bangers', cursive;
     font-size: 35px;
     color:goldenrod;
     margin-top:20px;
+    margin-right: 20px;
     
 }
 .board{

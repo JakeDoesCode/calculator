@@ -5,7 +5,7 @@ let operator = "";
 const currentDisplayNumber = document.querySelector(".currentNumber");
 const previousDisplayNumber = document.querySelector(".previousNumber");
 
-window.addEventListener("keydown", handleKeyPress);
+
 //if equal button is clicked, checks both numbers are defined
 const equal = document.querySelector("#btnEqual");
 equal.addEventListener("click", () => {
@@ -134,7 +134,7 @@ function addDecimal() {
 }
 
 //keyboard functionality
-
+window.addEventListener("keydown", handleKeyPress);
 function handleKeyPress(e) {
   e.preventDefault();
   if (e.key >= 0 && e.key <= 9) {
