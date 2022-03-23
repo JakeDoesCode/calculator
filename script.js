@@ -1,117 +1,175 @@
+let currentNum = "";
+let previousNum = "";
+let operator = "";
 
-// taking in the inputs
-const displayOut=document.querySelector(".display-out");
-const displayIn=document.querySelector(".display-in")
-let reply_click = function(id)
- {
-  displayIn.textContent=id;
- }
+const currentDisplayNumber = document.querySelector(".currentNumber");
+const previousDisplayNumber = document.querySelector(".previousNumber");
 
-
-let num1=0;
-let tempNum1Array =[];
-let num2=0;
-let tempNum2Array= [];
-let savedValue=0
-let operator='';
-let tempOpArray=[]
-
-const squareRoot = 'squareRoot'
-
-
-//basic math functions
- function add(num1,num2) {
-   let sum = num1+num2;
-   let roundNum= Math.round((sum + Number.EPSILON) *100) / 100;
-   roundNum=roundNum.toFixed(2);
-   console.log("Add:", roundNum)
-   
-   displayOut.textContent=roundNum;
-   
- }
- 
- function sub(a,b) {
-  let diff = a-b;
-  let roundNum= Math.round((diff+Number.EPSILON) *100)/100;
-  roundNum=roundNum.toFixed(2);
-  console.log("Add:", roundNum)
-  const displayOut=document.querySelector(".display-out");
-  displayOut.textContent=roundNum;
- }
- 
- function mult(a,b){
-   let product= a*b;
-   let roundNum= Math.round((product+Number.EPSILON) *100)/100;
-   roundNum=roundNum.toFixed(2);
-   console.log("Add:", roundNum)
-   const displayOut=document.querySelector(".display-out");
-   displayOut.textContent=roundNum;
- }
- 
- function divide(a,b){
- 
- if(a === 0 || b === 0){ alert("One does not simply divide by zero!");
- }else{
- let quot = a/b;
- let roundNum= Math.round((quot+Number.EPSILON) *100)/100;
- roundNum=roundNum.toFixed(2);
- console.log("Add:", roundNum);
- const displayOut=document.querySelector(".display-out");
- displayOut.textContent=roundNum;
-   };
- }
- 
- function exp(a,b){
-   let pow = a**b;
-   let roundNum= Math.round((pow+Number.EPSILON) *100)/100;
-   roundNum=roundNum.toFixed(2);
-   console.log("Add:", roundNum)
-   const displayOut=document.querySelector(".display-out");
-   displayOut.textContent=roundNum;
- }
- function sqr(a){
-  const displayOut=document.querySelector(".display-out");
-  if(a===0){
-    displayOut.textContent="Not doing that.";
-  }else{
-   let sqr = Math.sqrt(a);
-   let roundNum= Math.round((sqr+Number.EPSILON) *100)/100;
-   roundNum=roundNum.toFixed(2);
-   console.log("Add:", roundNum)
-   displayOut.textContent=roundNum;
-   return sqr;
+window.addEventListener("keydown", handleKeyPress);
+//if equal button is clicked, checks both numbers are defined
+const equal = document.querySelector("#btnEqual");
+equal.addEventListener("click", () => {
+  if (currentNum != "" && previousNum != "") {
+    compute();
   }
+});
+
+
+const decimal = document.querySelector("#btnDec");
+decimal.addEventListener("click", () => {
+  addDecimal();
+});
+
+
+const clear = document.querySelector("#btnClear");
+clear.addEventListener("click", clearCalculator);
+
+
+const numberButtons = document.querySelectorAll(".number");
+
+const operators = document.querySelectorAll(".operator");
+
+//when number is clicked pull text content from button and handleNumver
+numberButtons.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    handleNumber(e.target.textContent);
+  });
+});
+
+// takes in number and checks if a previous number has been entered, if yes, and an operator has not been pressed, concats the numbers
+function handleNumber(number) {
+  if (previousNum !== "" && currentNum !== "" && operator === "") {
+    previousNum = "";
+    currentDisplayNumber.textContent = currentNum;
   }
-
- 
- function operate(a,b,op){
-  if(op==='*') {
-    let answer= mult(a,b); 
-    console.log(answer);
-  }else if(op === '+'){
-    let answer= add(a,b); 
-    console.log(answer);
-  }else if (op === '-'){
-    let answer = sub(a,b); 
-    console.log(answer);
-  }else if(op==='/'){
-    let answer = divide(a,b);
-    console.log(answer);
+  if (currentNum.length <= 11) {
+    currentNum += number;
+    currentDisplayNumber.textContent = currentNum;
   }
-  else if(op==='**'){
-    let answer= exp(a,b);
-    console.log(answer);
+}
+// listens for operator
+operators.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    handleOperator(e.target.textContent);
+  });
+});
+// checks if numbers were input if both numbers in equasion are defined, runs compute
+function handleOperator(op) {
+  if (previousNum === "") {
+    previousNum = currentNum;
+    operatorCheck(op);
+  } else if (currentNum === "") {
+    operatorCheck(op);
+  } else {
+    compute();
+    operator = op;
+    currentDisplayNumber.textContent = "0";
+    previousDisplayNumber.textContent = previousNum + " " + operator;
   }
-  else if (op===squareRoot){
-    let answer=sqr(a);
-    console.log(answer);
-  }else {
-    alert("Not a valid operator")
+}
+// if op selected, assigns text to previous display number
+function operatorCheck(text) {
+  operator = text;
+  previousDisplayNumber.textContent = previousNum + " " + operator;
+  currentDisplayNumber.textContent = "0";
+  currentNum = "";
+}
+//compares operator string to specific operator executes appropriate math and assigns value to currentNum
+function compute() {
+  previousNum = parseFloat(previousNum);
+  currentNum = parseFloat(currentNum);
+
+  if (operator === "+") {
+    previousNum += currentNum;
+  } else if (operator === "-") {
+    previousNum -= currentNum;
+  } else if (operator === "x") {
+    previousNum *= currentNum;
   }
+   else if (operator === "/") {
+    if (currentNum <= 0) {
+      previousNum = "Error";
+      displayResults();
+      alert("One does not simply divide by zero.")
+      return;
+    }
+    previousNum /= currentNum;
+  }
+  //rounds number and displays results
+  previousNum = roundNumber(previousNum);
+  previousNum = previousNum.toString();
+  displayResults();
+}
 
- }
+function roundNumber(num) {
+  return Math.round(num * 100000) / 100000;
+}
+//displays number or removes additional numbers after 11th digit then reassigns to blank strings
+function displayResults() {
+  if (previousNum.length <= 11) {
+    currentDisplayNumber.textContent = previousNum;
+  } else {
+    currentDisplayNumber.textContent = previousNum.slice(0, 11) + "...";
+  }
+  previousDisplayNumber.textContent = "";
+  operator = "";
+  currentNum = "";
+}
 
-const clearButton = document.querySelector('#btnClear')
-clearButton.addEventListener('click',() => {location.reload();})
+//resets all variables
+function clearCalculator() {
+  currentNum = "";
+  previousNum = "";
+  operator = "";
+  currentDisplayNumber.textContent = "0";
+  previousDisplayNumber.textContent = "";
+}
 
+//adds decimal place
+function addDecimal() {
+  if (!currentNum.includes(".")) {
+    currentNum += ".";
+    currentDisplayNumber.textContent = currentNum;
+  }
+}
 
+//keyboard functionality
+
+function handleKeyPress(e) {
+  e.preventDefault();
+  if (e.key >= 0 && e.key <= 9) {
+    handleNumber(e.key);
+  }
+  if (
+    e.key === "Enter" ||
+    (e.key === "=" && currentNum != "" && previousNum != "")
+  ) {
+    compute();
+  }
+  if (e.key === "+" || e.key === "-" || e.key === "/") {
+    handleOperator(e.key);
+  }
+  if (e.key === "*") {
+    handleOperator("x");
+  }
+  if (e.key === ".") {
+    addDecimal();
+  }
+  if (e.key === "Backspace") {
+    handleDelete();
+  }
+}
+
+function handleDelete() {
+  if (currentNum !== "") {
+    currentNum = currentNum.slice(0, -1);
+    currentDisplayNumber.textContent = currentNum;
+    if (currentNum === "") {
+      currentDisplayNumber.textContent = "0";
+    }
+  }
+  if (currentNum === "" && previousNum !== "" && operator === "") {
+    previousNum = previousNum.slice(0, -1);
+    currentDisplayNumber.textContent = previousNum;
+  }
+}
