@@ -125,7 +125,7 @@ function clearCalculator() {
   previousDisplayNumber.textContent = "";
 }
 
-//adds decimal place
+//adds decimal place stops user from inputting multiple decimals
 function addDecimal() {
   if (!currentNum.includes(".")) {
     currentNum += ".";
