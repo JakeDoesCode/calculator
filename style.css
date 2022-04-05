@@ -1,135 +1,118 @@
-
-.flex-container{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width:100vw;
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
-.brand{
-    display:flex;
-    align-self:flex-end;
-    font-family: 'Bangers', cursive;
-    font-size: 35px;
-    color:goldenrod;
-    margin-top:20px;
-    margin-right: 20px;
-    
+.brand {
+  display: flex;
+  align-self: flex-end;
+  font-family: "Bangers", cursive;
+  font-size: 35px;
+  color: goldenrod;
+  margin-top: 20px;
+  margin-right: 20px;
 }
-.board{
-    display:flex;
-    height:80vh;
-    width:50vw;
-    border-radius: 10px;
-    min-height: 360px;
-    min-width: 400px;
-    align-content: flex-end;
-    flex-wrap: wrap; 
-    margin:2vh;
-    margin-top: 1vh;
-    background-color: grey
-    
-  
+.board {
+  display: flex;
+  height: 80vh;
+  width: 50vw;
+  border-radius: 10px;
+  min-height: 360px;
+  min-width: 400px;
+  align-content: flex-end;
+  flex-wrap: wrap;
+  margin: 2vh;
+  margin-top: 1vh;
+  background-color: grey;
 }
 
+button {
+  height: 12%;
+  width: 16%;
+  min-height: 40px;
+  min-width: 40px;
+  border-style: outset;
+  border-radius: 4px;
+  flex-grow: 1;
+  font-size: 2em;
+}
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.calculator {
+  display: flex;
+  width: 55vw;
+  height: 70vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: brown;
+  border-radius: 8px;
+  min-height: 500px;
+  min-width: 450px;
+  border-radius: 10px;
+}
+.previousNumber {
+  display: flex;
+  width: 100%;
+  height: 20%;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-size: 4em;
 
-button{
-   height: 12%;
-   width: 16%;
-   min-height: 40px;
-   min-width: 40px;
-   border-style:outset;
-   border-radius: 4px;
-   flex-grow: 1;
-   font-size: 2em;
-   
-   
-}
-button:hover{
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
-.calculator{
-    display:flex;
-    width:55vw;
-    height:70vh;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: brown;
-    border-radius: 8px;
-    min-height: 500px;
-    min-width: 450px;
-    border-radius: 10px;
-    
-}
-.previousNumber{
-    display:flex;
-    width: 100%;
-    height: 20%;
-    justify-content: flex-end;
-    align-items: flex-end;
-    font-size:4em;
-    
-
-    font-family: 'Space Mono', monospace;
-    
-    
-    
+  font-family: "Space Mono", monospace;
 }
 
-.currentNumber{
-    display:flex;
-    width: 100%;
-    height: 20%;
-    justify-content: end;
-    align-items: flex-end;
-    padding-bottom: 10px;
-    font-size: 4em;
-   
+.currentNumber {
+  display: flex;
+  width: 100%;
+  height: 20%;
+  justify-content: end;
+  align-items: flex-end;
+  padding-bottom: 10px;
+  font-size: 4em;
 
-    font-family: 'Space Mono', monospace;
-}
-
-
-.operator{
-    background-color:orange;
-}
-.flexOp{
-    display:flex;
-    width:100vw;
-}
-.numBox1{
-    display:flex;
-    width:100vw;
-    justify-content: center;
-    flex-wrap: wrap;
-    
-}
-.numBox2{
-    display:flex;
-    width:100vw;
-    justify-content: center;
-    flex-wrap: wrap;
-    
-}
-.numBox3{
-    display:flex;
-    width:100vw;
-    justify-content: center;
-    flex-wrap: wrap;
-    
-}
-.numBox4{
-    display:flex;
-    width:100vw;
-    justify-content: center;
-    flex-wrap: wrap;
-    
+  font-family: "Space Mono", monospace;
 }
 
-#btnEqual{
-    background-color: rgb(98, 98, 240);
+.operator {
+  background-color: orange;
 }
-#btnDec{
-    background-color: orange;
+.flexOp {
+  display: flex;
+  width: 100vw;
+}
+.numBox1 {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.numBox2 {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.numBox3 {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.numBox4 {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#btnEqual {
+  background-color: rgb(98, 98, 240);
+}
+#btnDec {
+  background-color: orange;
 }

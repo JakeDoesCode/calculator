@@ -5,7 +5,6 @@ let operator = "";
 const currentDisplayNumber = document.querySelector(".currentNumber");
 const previousDisplayNumber = document.querySelector(".previousNumber");
 
-
 //if equal button is clicked, checks both numbers are defined
 const equal = document.querySelector("#btnEqual");
 equal.addEventListener("click", () => {
@@ -14,16 +13,13 @@ equal.addEventListener("click", () => {
   }
 });
 
-
 const decimal = document.querySelector("#btnDec");
 decimal.addEventListener("click", () => {
   addDecimal();
 });
 
-
 const clear = document.querySelector("#btnClear");
 clear.addEventListener("click", clearCalculator);
-
 
 const numberButtons = document.querySelectorAll(".number");
 
@@ -85,12 +81,11 @@ function compute() {
     previousNum -= currentNum;
   } else if (operator === "x") {
     previousNum *= currentNum;
-  }
-   else if (operator === "/") {
+  } else if (operator === "/") {
     if (currentNum <= 0) {
       previousNum = "Error";
       displayResults();
-      alert("One does not simply divide by zero.")
+      alert("One does not simply divide by zero.");
       return;
     }
     previousNum /= currentNum;
